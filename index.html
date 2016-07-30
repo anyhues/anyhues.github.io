@@ -3,20 +3,21 @@
   <head>
     <meta charset="UTF-8"/>
     <title>Document</title>
-    <link rel="stylesheet" href="https://niehues-assets.github.io/css/main-f0f6e5d5cd.css"/>
+    <link rel="stylesheet" href="https://niehues-assets.github.io/css/main.css"/>
   </head>
   <body>
     <header class="main-header">
-      <div class="overlay"></div>
       <nav class="meta">
         <ul>
-          <li class="meta-about-me"><a>über mich</a></li>
-          <li><a>impressum</a></li>
+          <li class="meta-about-me"><a href="#about-me">über mich</a></li>
+          <li class="meta-practice"><a href="#practice">praxis</a></li>
+          <li><a href="#contact">kontakt</a></li>
+          <li><a href="#imprint">impressum</a></li>
         </ul>
       </nav>
       <picture>
-        <source srcset="https://niehues-assets.github.io/images/landing-page-bg-1380-8128a1c0ab.png" media="(min-width: 1200px)"/>
-        <source srcset="https://niehues-assets.github.io/images/landing-page-bg-1024-1d87c6604d.png" media="(min-width: 640px)"/><img src="https://niehues-assets.github.io/images/landing-page-bg-640-1766dbfaa6.png" alt=""/>
+        <source srcset="https://niehues-assets.github.io/images/landing-page-bg-1380.png" media="(min-width: 1200px)"/>
+        <source srcset="https://niehues-assets.github.io/images/landing-page-bg-1024.png" media="(min-width: 640px)"/><img src="https://niehues-assets.github.io/images/landing-page-bg-640.png" alt=""/>
       </picture>
       <div class="central-teaser">
         <h1>Andreas Niehues</h1>
@@ -57,7 +58,7 @@
 
       </div>
       <div class="about-me-wrapper">
-        <section class="about-me">
+        <section class="about-me" id="about-me">
           <header>
             <div class="avatar"></div>
             <h2>Andreas Niehues // Über mich</h2>
@@ -102,6 +103,32 @@
             </div>
           </div>
         </section>
+      </div>
+      <div class="area" id="practice"><h2>Praxis und Anfahrt</h2>
+<p>Die Praxis befindet sich in der sanierten ehemaligen Lukaskirche in Essen-Holsterhausen.</p>
+<p>Die Praxis ist barrierefrei zugänglich und es befinden sich Parkplätze direkt vor dem Haus.
+Die Anbindung an die umliegenden Städte ist ideal, die A40 und die A52 sind 10 Fahrminuten entfernt.</p>
+<p>Auch mit dem öffentlichen Nahverkerhr (U18 und Tram 101) ist die Praxis gut zu erreichen</p>
+
+      </div>
+      <div class="contact area" id="contact">
+        <h2>Kontakt</h2>
+        <div class="form">
+          <label for="email-address">E-Mail</label>
+          <input id="email-address" type="email"/>
+          <label for="content">Nachricht</label>
+          <textarea id="content"></textarea>
+          <div class="action">
+            <input type="submit" value="Absenden"/>
+          </div>
+        </div>
+        <address class="address">
+          <h3>Anschrift</h3>
+          <div class="name">Systemisch-integrative Praxis</div>
+          <div class="street">Planckstraße 115</div>
+          <div class="city">45147 Essen-Holsterhausen</div>
+          <h3>Telefon</h3><a href="tel:020112345567889">0201-12345567889</a>
+        </address>
       </div>
     </section>
   </body>
