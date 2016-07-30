@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8"/>
     <title>Document</title>
-    <link rel="stylesheet" href="https://niehues-assets.github.io/css/main-a20bda76da.css"/>
+    <link rel="stylesheet" href="https://niehues-assets.github.io/css/main-1dcba5e328.css"/>
   </head>
   <body>
     <header class="main-header">
@@ -113,15 +113,17 @@ Die Anbindung an die umliegenden Städte ist ideal, die A40 und die A52 sind 10 
       </div>
       <div class="contact area" id="contact">
         <h2>Kontakt</h2>
-        <div class="form">
+        <form class="form contact-form">
           <label for="email-address">E-Mail</label>
-          <input id="email-address" type="email"/>
+          <input id="email-address" type="email" name="email"/>
           <label for="content">Nachricht</label>
-          <textarea id="content"></textarea>
+          <textarea id="content" name="content"></textarea>
+          <input type="hidden" name="_format" value="plain"/>
+          <input type="text" name="_gotcha" style="display:none"/>
           <div class="action">
-            <input type="submit" value="Absenden"/>
+            <input class="contact-submit" type="submit" value="Absenden"/>
           </div>
-        </div>
+        </form>
         <address class="address">
           <h3>Anschrift</h3>
           <p class="name">Systemisch-integrative Praxis</p>
@@ -131,5 +133,29 @@ Die Anbindung an die umliegenden Städte ist ideal, die A40 und die A52 sind 10 
         </address>
       </div>
     </section>
+    <script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"></script>
+    <script>
+      var host = "pra!?x!is" + "!!nie!!" + "!hues??" + ".??de"
+      var user = "!i!n?f?o"
+      var address = user+host
+      
+      $('.contact-form').on('submit', function(e) {
+        e.preventDefault();
+      
+        var target = $(e.target);
+      
+        var data = target.serializeArray().reduce(function(obj, item) {
+          obj[item.name] = item.value;
+          return obj;
+        }, {});
+      
+        $.ajax({
+          url: ("https!!!://?!!formspree?!.i?o/" + address).replace(/[\?,\!]/gi, ""),
+          method: "POST",
+          data: data,
+          dataType: "json"
+        });
+      });
+    </script>
   </body>
 </html>
