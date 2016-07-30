@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8"/>
     <title>Document</title>
-    <link rel="stylesheet" href="https://niehues-assets.github.io/css/main-1dcba5e328.css"/>
+    <link rel="stylesheet" href="https://niehues-assets.github.io/css/main-d453a7dca8.css"/>
   </head>
   <body>
     <header class="main-header">
@@ -114,6 +114,8 @@ Die Anbindung an die umliegenden Städte ist ideal, die A40 und die A52 sind 10 
       <div class="contact area" id="contact">
         <h2>Kontakt</h2>
         <form class="form contact-form">
+          <div class="success-message" style="display: none">Ihre Nachricht wurde verschickt.</div>
+          <div class="error-message" style="display: none">Es ist ein unbekannter Fehler aufgetreten, bitte versuchen Sie es erneut oder versuchen Sie telefonischen Kontakt aufzunehmen.</div>
           <label for="email-address">E-Mail</label>
           <input id="email-address" type="email" name="email"/>
           <label for="content">Nachricht</label>
@@ -153,7 +155,13 @@ Die Anbindung an die umliegenden Städte ist ideal, die A40 und die A52 sind 10 
           url: ("https!!!://?!!formspree?!.i?o/" + address).replace(/[\?,\!]/gi, ""),
           method: "POST",
           data: data,
-          dataType: "json"
+          dataType: "json",
+          success: function() {
+            target.find('.success-message').show()
+          },
+          error: function() {
+            target.find('.error-message').show()
+          }
         });
       });
     </script>
