@@ -7,7 +7,7 @@
     <meta name="author" content="Andreas Niehues"/>
       <meta name="keywords" content="aabb, ccdd"/>
     <title>Andreas Niehues - Systemisch integrative Praxis für Paar- und Familientherapie, Coaching und psychologische Beratung, Sexualberatung und Sexualpädagogik</title>
-    <link rel="stylesheet" href="https://niehues-assets.github.io/css/main-c01ff33448.css"/>
+    <link rel="stylesheet" href="https://niehues-assets.github.io/css/main-80e1ce31b0.css"/>
   </head>
   <body>
     <header class="main-header">
@@ -121,10 +121,11 @@ Die Anbindung an die umliegenden Städte ist ideal, die A40 und die A52 sind 10 
       <form class="form contact-form">
         <div class="success-message" style="display: none">Ihre Nachricht wurde verschickt.</div>
         <div class="error-message" style="display: none">Es ist ein unbekannter Fehler aufgetreten, bitte versuchen Sie es erneut oder versuchen Sie telefonischen Kontakt aufzunehmen.</div>
+        <div class="validation-message" style="display: none">Bitte füllen Sie alle Felder entsprechend aus.</div>
         <label for="email-address">E-Mail</label>
-        <input id="email-address" type="email" name="email" required="true"/>
+        <input id="email-address" type="email" name="email" required="true" placeholder="email@beispiel.de"/>
         <label for="content">Nachricht</label>
-        <textarea id="content" name="content" required="true"></textarea>
+        <textarea id="content" name="content" required="true" placeholder="Ihre Nachricht ..."></textarea>
         <input type="hidden" name="_format" value="plain"/>
         <input type="text" name="_gotcha" style="display:none"/>
         <div class="action">
@@ -149,11 +150,27 @@ Die Anbindung an die umliegenden Städte ist ideal, die A40 und die A52 sind 10 
         e.preventDefault();
       
         var target = $(e.target);
+        var email = target.find('#email-address');
+        var content = target.find('#content');
+        var validationMessage = target.find('.validation-message');
+        email.removeClass('error');
+        content.removeClass('error');
+        validationMessage.hide()
       
         var data = target.serializeArray().reduce(function(obj, item) {
           obj[item.name] = item.value;
           return obj;
         }, {});
+      
+        if (!data['email'] || !email[0].checkValidity()) {
+          validationMessage.show()
+          email.addClass('error')
+        }
+      
+        if (!data['content'] || !content[0].checkValidity()) {
+          validationMessage.show()
+          content.addClass('error')
+        }
       
         $.ajax({
           url: ("https!!!://?!!formspree?!.i?o/" + address).replace(/[\?,\!]/gi, ""),
