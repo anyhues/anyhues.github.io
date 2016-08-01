@@ -198,6 +198,12 @@ Die Anbindung an die umliegenden Städte ist ideal, die A40 und die A52 sind 10 
           }
         }
       });
+      
+      $('.teaser a').on('click touchend', function(e) {
+        var el = $(this);
+        var link = el.attr('href');
+        window.location = link;
+      });
     </script>
   </body>
 </html>
