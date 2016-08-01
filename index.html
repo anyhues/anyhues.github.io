@@ -7,7 +7,7 @@
     <meta name="author" content="Andreas Niehues"/>
       <meta name="keywords" content="aabb, ccdd"/>
     <title>Andreas Niehues - Systemisch integrative Praxis für Paar- und Familientherapie, Coaching und psychologische Beratung, Sexualberatung und Sexualpädagogik</title>
-    <link rel="stylesheet" href="https://niehues-assets.github.io/css/main-a9a158a2b9.css"/>
+    <link rel="stylesheet" href="https://niehues-assets.github.io/css/main-22c63bc564.css"/>
   </head>
   <body>
     <header class="main-header">
@@ -25,7 +25,7 @@
       </picture>
       <div class="central-teaser">
         <h1>Andreas Niehues</h1>
-        <p class="sub-title">Systemisch integrative Praxis für Paar- und Familientherapie, Coaching und psychologische Beratung, Sexualberatung und Sexualpädagogik</p>
+        <p class="sub-title">Systemisch integrative Praxis für <span class="together">Paar- und Familientherapie</span>, <span class="together">Coaching und psychologische Beratung</span>, <span class="together">Sexualberatung und Sexualpädagogik</span></p>
       </div>
     </header>
     <section class="content">
@@ -49,10 +49,10 @@
                     <div class="img-container"></div><span class="label">Familien</span></a></li>
                 <li class="teaser teaser-single"><a href="http://www.sexualtherapeut-essen.de">
                     <div class="overlay"></div>
-                    <div class="img-container"></div><span class="label">Singles</span></a></li>
+                    <div class="img-container"></div><span class="label">Einzelpersonen</span></a></li>
                 <li class="teaser teaser-corporations"><a href="#">
                     <div class="overlay"></div>
-                    <div class="img-container"></div><span class="label">Organisationen</span></a></li>
+                    <div class="img-container"></div><span class="label">Fachkräfte</span></a></li>
           </ul>
       <div class="area"><h2>Meine Arbeitsweise:</h2>
 <p>Ich arbeite systemisch-intergrativ, was bedeutet, dass meine Arbeitsweise stark durch die systemische Therapie geprägt ist. Darüber hinaus arbeite ich mit Methoden aus der Tiefenpsychologie und der Verhaltenstherapie.</p>
@@ -114,6 +114,7 @@
 <p>Die Praxis ist barrierefrei zugänglich und es befinden sich Parkplätze direkt vor dem Haus.
 Die Anbindung an die umliegenden Städte ist ideal, die A40 und die A52 sind 10 Fahrminuten entfernt.</p>
 <p>Auch mit dem öffentlichen Nahverkerhr (U18 und Tram 101) ist die Praxis gut zu erreichen</p>
+<p>a(href=&quot;https://www.google.de/maps/place/Hufelandstra%C3%9Fe,+45147+Essen/@51.4363058,6.9894826,17z/data=!3m1!4b1!4m5!3m4!1s0x47b8c2de5ec652cd:0x52674f36988be9d5!8m2!3d51.4363025!4d6.9916713&quot;) Navigation</p>
 
     </div>
     <div class="contact area" id="contact">
@@ -123,9 +124,9 @@ Die Anbindung an die umliegenden Städte ist ideal, die A40 und die A52 sind 10 
         <div class="error-message" style="display: none">Es ist ein unbekannter Fehler aufgetreten, bitte versuchen Sie es erneut oder versuchen Sie telefonischen Kontakt aufzunehmen.</div>
         <div class="validation-message" style="display: none">Bitte füllen Sie alle Felder entsprechend aus.</div>
         <label for="email-address">E-Mail</label>
-        <input id="email-address" type="email" name="email" required="true" placeholder="email@beispiel.de"/>
+        <input id="email-address" type="email" name="email" placeholder="email@beispiel.de"/>
         <label for="content">Nachricht</label>
-        <textarea id="content" name="content" required="true" placeholder="Ihre Nachricht ..."></textarea>
+        <textarea id="content" name="content" placeholder="Ihre Nachricht ..."></textarea>
         <input type="hidden" name="_format" value="plain"/>
         <input type="text" name="_gotcha" style="display:none"/>
         <div class="action">
@@ -149,10 +150,12 @@ Die Anbindung an die umliegenden Städte ist ideal, die A40 und die A52 sind 10 
       $('.contact-form').on('submit', function(e) {
         e.preventDefault();
       
+        var error = false;
         var target = $(e.target);
         var email = target.find('#email-address');
         var content = target.find('#content');
         var validationMessage = target.find('.validation-message');
+        var mailSuffixPattern = new RegExp("^.*?\.[a-zA-Z]{2,3}$");
         email.removeClass('error');
         content.removeClass('error');
         validationMessage.hide()
@@ -162,14 +165,22 @@ Die Anbindung an die umliegenden Städte ist ideal, die A40 und die A52 sind 10 
           return obj;
         }, {});
       
-        if (!data['email'] || !email[0].checkValidity()) {
-          validationMessage.show()
-          email.addClass('error')
+        console.log("MAIL SUFFIX", mailSuffixPattern.test(data['email']))
+        if (!data['email'] || !email[0].checkValidity() || !mailSuffixPattern.test(data['email'])) {
+          email.addClass('error');
+          error = true
         }
       
         if (!data['content'] || !content[0].checkValidity()) {
-          validationMessage.show()
-          content.addClass('error')
+          content.addClass('error');
+          error = true
+        }
+      
+        if (error) {
+          target.find('.success-message').hide();
+          target.find('.error-message').hide();
+          validationMessage.show();
+          return;
         }
       
         $.ajax({
@@ -178,14 +189,14 @@ Die Anbindung an die umliegenden Städte ist ideal, die A40 und die A52 sind 10 
           data: data,
           dataType: "json",
           success: function() {
-            validationMessage.hide()
-            target.find('.error-message').hide()
-            target.find('.success-message').show()
+            validationMessage.hide();
+            target.find('.error-message').hide();
+            target.find('.success-message').show();
           },
           error: function() {
-            target.find('.success-message').hide()
-            validationMessage.hide()
-            target.find('.error-message').show()
+            target.find('.success-message').hide();
+            validationMessage.hide();
+            target.find('.error-message').show();
           }
         });
       });
