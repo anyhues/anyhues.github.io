@@ -169,8 +169,6 @@ Die Anbindung an die umliegenden Städte ist ideal, die A40 und die A52 sind 10 
           return obj;
         }, {});
       
-        console.log("MAIL SUFFIX", data['email'])
-        console.log("MAIL SUFFIX", mailSuffixPattern.test(data['email']))
         if (!data['email'] || !email[0].checkValidity() || !mailSuffixPattern.test(data['email'])) {
           email.addClass('error');
           error = true
