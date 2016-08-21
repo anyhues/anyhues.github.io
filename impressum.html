@@ -113,6 +113,7 @@
             return;
           }
       
+          target.addClass('disabled')
           inputs.attr('disabled', 'disabled');
       
           $.ajax({
@@ -127,8 +128,11 @@
               validationMessage.hide();
               target.find('.error-message').hide();
               target.find('.success-message').show();
+              target.removeClass('disabled')
             },
             error: function() {
+              inputs.attr('disabled', false);
+              target.removeClass('disabled')
               target.find('.success-message').hide();
               validationMessage.hide();
               target.find('.error-message').show();
