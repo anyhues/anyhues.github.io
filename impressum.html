@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="author" content="Andreas Niehues"/>
     <title>Andreas Niehues - Impressum</title>
-    <link rel="stylesheet" href="https://niehues-assets.github.io/css/main-7f95210654.css"/>
+    <link rel="stylesheet" href="https://niehues-assets.github.io/css/main-2a72b7c010.css"/>
     <script src="https://niehues-assets.github.io/vendor/picturefill.min.js" async="async"></script>
   </head>
   <body class="production-environment" id="top">
@@ -65,14 +65,19 @@
     <footer class="main-footer">
       <p class="copyright">Copyright &copy; 2016 Andreas Niehues</p>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js" async="async"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script>
       $(document).ready(() => {
         var host = "pra!?x!is" + "!!-nie!!" + "!hues??" + ".??de"
         var user = "!i!n?f?o"
         var address = user+"@"+host
+        var contactForm = $('.contact-form')
       
-        $('.contact-form').on('submit', function(e) {
+        contactForm.removeClass('disabled')
+        .find(':disabled').attr('disabled', false)
+        contactForm.find('.loading-message').remove()
+      
+        contactForm.on('submit', function(e) {
           e.preventDefault();
       
           var error = false;
