@@ -2,14 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>http://www.praxis-niehues.de/impressum.html</loc>
-        <lastmod>2016-11-14T18:57:27.000Z</lastmod>
+        <lastmod>2016-11-14T19:19:21.000Z</lastmod>
     </url>
     <url>
         <loc>http://www.praxis-niehues.de/</loc>
-        <lastmod>2016-11-14T18:57:27.000Z</lastmod>
+        <lastmod>2016-11-14T19:19:21.000Z</lastmod>
+    </url>
+    <url>
+        <loc>http://www.praxis-niehues.de/familientherapie</loc>
+        <lastmod>2016-11-14T19:16:22.000Z</lastmod>
     </url>
     <url>
         <loc>http://www.praxis-niehues.de/organisationen</loc>
         <lastmod>2016-08-15T16:50:56.000Z</lastmod>
+    </url>
+    <url>
+        <loc>http://www.praxis-niehues.de/paartherapie</loc>
+        <lastmod>2016-11-14T19:16:49.000Z</lastmod>
+    </url>
+    <url>
+        <loc>http://www.praxis-niehues.de/psychologische-beratung</loc>
+        <lastmod>2016-11-14T19:16:32.000Z</lastmod>
     </url>
 </urlset>
